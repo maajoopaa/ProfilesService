@@ -18,7 +18,7 @@ namespace Profiles.API.Controllers
             _doctorService = doctorService;
         }
 
-        [HttpPost("")]
+        [HttpPost(""),Authorize]
         public async Task<IActionResult> CreateAsync([FromBody] DoctorCreateRequest model)
         {
             var response = await _doctorService.CreateAsync(model);
@@ -50,7 +50,7 @@ namespace Profiles.API.Controllers
             return response.Success ? Ok(response.Data) : BadRequest(response.Error);
         }
 
-        [HttpGet("list")]
+        [HttpPost("list")]
         public async Task<IActionResult> GetListAsync([FromBody] PaginationModel model)
         {
             var response = await _doctorService.GetListAsync(model);

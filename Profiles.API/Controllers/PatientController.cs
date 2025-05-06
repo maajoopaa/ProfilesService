@@ -34,8 +34,8 @@ namespace Profiles.API.Controllers
             return response.Success ? Ok(response.Data) : BadRequest(response.Error);
         }
 
-        [HttpPost("")]
-        public async Task<IActionResult> CreateAsync([FromBody] Guid accountId, [FromBody] PatientRequest model)
+        [HttpPost("{accountId:guid}")]
+        public async Task<IActionResult> CreateAsync(Guid accountId, [FromBody] PatientRequest model)
         {
             var response = await _patientService.AddAsync(accountId, model);
 

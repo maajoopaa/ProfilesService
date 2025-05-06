@@ -29,6 +29,9 @@ namespace Profiles.API
         public static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<IDoctorService,DoctorService>();
+            services.AddTransient<IPatientService,PatientService>();
+            services.AddTransient<IReceptionistService,ReceptionistService>();
+            services.AddTransient<ISpecializaitonService,SpecializaitonService>();
         }
     }
 }

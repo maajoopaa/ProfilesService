@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Profiles.Application.Models;
 using Profiles.Application.Services;
@@ -7,7 +8,7 @@ using System.Reflection;
 namespace Profiles.API.Controllers
 {
     [ApiController]
-    [Route("patient")]
+    [Route("patient"),Authorize]
     public class PatientController : ControllerBase
     {
         private readonly IPatientService _patientService;

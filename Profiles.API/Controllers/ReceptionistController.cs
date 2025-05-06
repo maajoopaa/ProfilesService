@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Profiles.Application.Models;
 using Profiles.Application.Services;
@@ -6,7 +7,7 @@ using Profiles.Application.Services;
 namespace Profiles.API.Controllers
 {
     [ApiController]
-    [Route("receptionist")]
+    [Route("receptionist"),Authorize]
     public class ReceptionistController : ControllerBase
     {
         private readonly IReceptionistService _receptionistService;

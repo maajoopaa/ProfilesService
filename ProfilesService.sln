@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Profiles.Sql", "Profiles.Sq
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationScheme", "..\AuthenticationScheme\AuthenticationScheme\AuthenticationScheme.csproj", "{E072D9C7-3A8D-4EE8-937E-05852FEF8E2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profiles.Shared", "Profiles.Shared\Profiles.Shared.csproj", "{D6AC3A20-7C98-4A06-B942-FEEA3FDA7D7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E072D9C7-3A8D-4EE8-937E-05852FEF8E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E072D9C7-3A8D-4EE8-937E-05852FEF8E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E072D9C7-3A8D-4EE8-937E-05852FEF8E2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6AC3A20-7C98-4A06-B942-FEEA3FDA7D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6AC3A20-7C98-4A06-B942-FEEA3FDA7D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6AC3A20-7C98-4A06-B942-FEEA3FDA7D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6AC3A20-7C98-4A06-B942-FEEA3FDA7D7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

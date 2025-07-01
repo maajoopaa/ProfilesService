@@ -18,12 +18,15 @@ namespace Profiles.Application.Services
         private readonly IPatientsRepository _patientsRepository;
         private readonly IValidator<PatientRequest> _validator;
         private readonly IValidator<PaginationModel> _pagValidator;
+        private readonly IRoleService _roleService;
 
-        public PatientService(IPatientsRepository patientsRepository, IValidator<PatientRequest> validator, IValidator<PaginationModel> pagValidator)
+        public PatientService(IPatientsRepository patientsRepository, IValidator<PatientRequest> validator, IValidator<PaginationModel> pagValidator,
+            IRoleService roleService)
         {
             _patientsRepository = patientsRepository;
             _validator = validator;
             _pagValidator = pagValidator;
+            _roleService = roleService;
         }
 
         public async Task<ServiceResponse<Patient>> GetAsync(Guid id)
@@ -98,6 +101,11 @@ namespace Profiles.Application.Services
                 };
 
                 await _patientsRepository.AddAsync(patient);
+
+                await _roleService.ChangeAccountRoleAsync(accountId, new UpdateAccountRoleRequest
+                {
+                    Role = Role.Patient
+                });
 
                 return new ServiceResponse<Patient>
                 {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Profiles.Application.Models;
 using Profiles.Application.Services;
 using Profiles.Domain.Models;
+
 
 namespace Profiles.API.Controllers
 {
@@ -18,7 +18,7 @@ namespace Profiles.API.Controllers
             _doctorService = doctorService;
         }
 
-        [HttpPost(""),Authorize]
+        [HttpPost(""),/*Authorize*/]
         public async Task<IActionResult> CreateAsync([FromBody] DoctorCreateRequest model)
         {
             var response = await _doctorService.CreateAsync(model);

@@ -15,10 +15,11 @@ namespace Profiles.Application.Services
         private readonly IValidator<PaginationModel> _pagValidator;
         private readonly IConfiguration _config;
         private readonly HttpClient _httpClient;
+        private readonly IRoleService _roleService;
 
         public ReceptionistService(IReceptionistsRepository receptionistsRepository, IValidator<ReceptionistCreateRequest> createValidator,
             IValidator<ReceptionistUpdateRequest> updateValidator, IValidator<PaginationModel> pagValidator, IConfiguration config,
-            HttpClient httpClient)
+            HttpClient httpClient, IRoleService roleService)
         {
             _receptionistsRepository = receptionistsRepository;
             _createValidator = createValidator;
@@ -26,6 +27,7 @@ namespace Profiles.Application.Services
             _pagValidator = pagValidator;
             _config = config;
             _httpClient = httpClient;
+            _roleService = roleService;
         }
 
         public async Task<ServiceResponse<Receptionist>> GetAsync(Guid id)
@@ -105,6 +107,11 @@ namespace Profiles.Application.Services
 
                     if (accountResponse is not null)
                     {
+                        await _roleService.ChangeAccountRoleAsync(accountResponse.Id, new UpdateAccountRoleRequest
+                        {
+                            Role = Role.Admin
+                        });
+
                         var receptionist = new Receptionist
                         {
                             ImageUrl = model.ImageUrl,

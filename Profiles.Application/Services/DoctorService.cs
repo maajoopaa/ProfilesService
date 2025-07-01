@@ -15,9 +15,11 @@ namespace Profiles.Application.Services
         private readonly IConfiguration _config;
         private readonly IValidator<DoctorUpdateRequest> _updateValidator;
         private readonly IValidator<PaginationModel> _pagValidator;
+        private readonly IRoleService _roleService;
 
         public DoctorService(IDoctorsRepository doctorsRepository, IValidator<DoctorCreateRequest> createValidator, HttpClient httpClient,
-            IConfiguration config, IValidator<DoctorUpdateRequest> updateValidator, IValidator<PaginationModel> pagValidator)
+            IConfiguration config, IValidator<DoctorUpdateRequest> updateValidator, IValidator<PaginationModel> pagValidator,
+            IRoleService roleService)
         {
             _doctorsRepository = doctorsRepository;
             _createValidator = createValidator;
@@ -25,6 +27,7 @@ namespace Profiles.Application.Services
             _config = config;
             _updateValidator = updateValidator;
             _pagValidator = pagValidator;
+            _roleService = roleService;
         }
 
         public async Task<ServiceResponse<List<Doctor>>> GetListAsync(PaginationModel model)
@@ -106,6 +109,11 @@ namespace Profiles.Application.Services
 
                     if (accountResponse is not null)
                     {
+                        await _roleService.ChangeAccountRoleAsync(accountResponse.Id, new UpdateAccountRoleRequest
+                        {
+                            Role = Role.Doctor
+                        });
+
                         var doctor = new Doctor
                         {
                             FirstName = model.FirstName,

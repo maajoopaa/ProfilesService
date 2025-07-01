@@ -12,7 +12,6 @@ namespace Profiles.API
         {
             services.AddTransient<IDoctorsRepository,DoctorsRepository>();
             services.AddTransient<IPatientsRepository,PatientsRepository>();
-            services.AddTransient<ISpecializationsRepository,SpecializationsRepository>();
             services.AddTransient<IReceptionistsRepository, ReceptionistsRepository>();
         }
 
@@ -31,7 +30,7 @@ namespace Profiles.API
             services.AddTransient<IDoctorService,DoctorService>();
             services.AddTransient<IPatientService,PatientService>();
             services.AddTransient<IReceptionistService,ReceptionistService>();
-            services.AddTransient<ISpecializaitonService,SpecializaitonService>();
+            services.AddTransient<IRoleService,RoleService>();
         }
     }
 }
